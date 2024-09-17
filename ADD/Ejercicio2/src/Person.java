@@ -1,5 +1,14 @@
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Person {
+
+    private static final String FECHA_NACIMIENTO_NO_VALIDA = "Fecha de nacimiento no valida";
+    private static final String TELEFONO_NO_VALIDO = "Telefono no valido";
+    private static final String SUELDO_NO_VALIDO = "Sueldo no valido";
+
     protected String name;
+    protected Date birthdate;
     protected int age;
 
     public String getName() {
@@ -14,7 +23,15 @@ public class Person {
         return age;
     }
 
-    public void setAge(int value) throws IndexOutOfBoundsException {
+    public void setBirthdate(Date birthdate) throws IllegalArgumentException{
+        //LocalDate currentDate = LocalDate.now();
+        Date currentDate = (Date)LocalDate.now();
+        if(birthdate.before(currentDate))
+            this.birthdate = birthdate;
+        else
+            throw new IllegalArgumentException("La fecha introducida no es valida");
+    }
+    public void setAgeAlternative(int value) throws IndexOutOfBoundsException {
         if (value < 0 || value > 120)
             age = value;
         else

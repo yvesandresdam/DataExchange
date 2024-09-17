@@ -2,9 +2,7 @@ public class Main {
     // EJERCICIO 2
     // MIGRAR C# A JAVA
 
-    private static final String FECHA_NACIMIENTO_NO_VALIDA = "Fecha de nacimiento no valida";
-    private static final String TELEFONO_NO_VALIDO = "Telefono no valido";
-    private static final String SUELDO_NO_VALIDO = "Sueldo no valido";
+
 
     public static void main(String[] args) {
         System.out.println("Migrando a JAVA");

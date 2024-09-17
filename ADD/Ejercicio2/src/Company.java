@@ -14,5 +14,5 @@ public class Company{
             throw new RuntimeException("El cliente introducido es nulo");
         clientsList.add(client);
     }
-    
+
 }
