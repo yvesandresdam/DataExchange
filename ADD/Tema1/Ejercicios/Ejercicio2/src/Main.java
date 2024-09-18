@@ -6,16 +6,9 @@ public class Main {
     // MIGRAR C# A JAVA
 
 
-
     public static void main(String[] args) {
 
         System.out.println("Migrando a JAVA");
-        Date date1 = new Date();
-        System.out.println(date1);
-
-        LocalDate local1 = LocalDate.now();
-        System.out.println(local1);
-        local1 = LocalDate.of(2024,10,10);
 
     }
 }
