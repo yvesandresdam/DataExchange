@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="/untitled/">
+    <file alias="Main.qml">C:/Users/yveelilop/Documents/untitled/Main.qml</file>
+    <file alias="test.qml">C:/Users/yveelilop/Documents/untitled/test.qml</file>
+    <file alias="Test2.qml">C:/Users/yveelilop/Documents/untitled/Test2.qml</file>
+    <file alias="RectangleTest.qml">C:/Users/yveelilop/Documents/untitled/RectangleTest.qml</file>
+  </qresource>
+</RCC>
+
