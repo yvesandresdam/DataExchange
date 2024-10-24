@@ -1,7 +1,0 @@
-module untitled
-typeinfo appuntitled.qmltypes
-prefer :/untitled/
-Main 1.0 Main.qml
-Test2 1.0 Test2.qml
-RectangleTest 1.0 RectangleTest.qml
-
