@@ -1,5 +1,5 @@
 class Comarca {
-  // Atributos de Comarca
+  // Atributos de clase
   late String comarca;
   String? capital;
   String? poblacion;
@@ -18,7 +18,7 @@ class Comarca {
       this.latitud,
       this.longitud});
 
-  // Constructor de objetos
+  // Constructor de objetos JSON
   factory Comarca.fromJSON(Map<String, dynamic> json) {
     return Comarca(
       comarca: json["comarca"],
@@ -36,48 +36,19 @@ class Comarca {
     return comarca;
   }
 
-  // Override toString Function
+  // Herramientas de UI
   String redColor = "\x1B[31m";
   String yellowColor = "\x1B[33m";
   String resetColor = "\x1B[0m";
 
+  // Sobreescritura de funcion 'toString()'
   @override
-  String toString() =>
-      redColor +
-      "Comarca:\t" +
-      yellowColor +
-      "$comarca" +
-      "\n" +
-      redColor +
-      "Capital:\t" +
-      yellowColor +
-      "$capital" +
-      "\n" +
-      resetColor +
-      redColor +
-      "Poblacion:\t" +
-      yellowColor +
-      "$poblacion" +
-      "\n" +
-      resetColor +
-      "\n" +
-      redColor +
-      "Imagen:\t" +
-      yellowColor +
-      "$image" +
-      "\n" +
-      redColor +
-      "Descripcion:\t" +
-      yellowColor +
-      "$desc" +
-      "\n" +
-      resetColor +
-      redColor +
-      "Coordenadas:\t" +
-      yellowColor +
-      "($latitud" +
-      "," +
-      "$longitud)" +
-      "\n" +
-      resetColor;
+  String toString() {
+    return "${redColor}Comarca:\t${yellowColor}${comarca}\n" +
+        "${redColor}Capital:\t${yellowColor}${capital}\n" +
+        "${redColor}Poblacion:\t${yellowColor}${poblacion}\n" +
+        "${redColor}Imagen:\t${yellowColor}${image}\n" +
+        "${redColor}Descripcion:\t${yellowColor}${desc}\n" +
+        "${redColor}Coordenadas:\t${yellowColor}${latitud},${longitud}\n";
+  }
 }
