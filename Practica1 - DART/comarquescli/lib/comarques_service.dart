@@ -124,8 +124,6 @@ class ComarquesService {
         final Map<String, dynamic> bodyJSON = jsonDecode(body);
 
         //final List<dynamic> bodyJSON = jsonDecode(body);
-
-        print(bodyJSON);
         comarcaResult = Comarca.fromJSON(bodyJSON);
       }
       return comarcaResult;

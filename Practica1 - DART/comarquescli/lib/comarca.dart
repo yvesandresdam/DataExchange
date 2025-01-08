@@ -32,7 +32,7 @@ class Comarca {
   }
 
   // Salida por consola de lista de comarcas de una provincia
-  String toListElements() {
+  String getComarcaString() {
     return comarca;
   }
 
@@ -47,8 +47,8 @@ class Comarca {
     return "${redColor}Comarca:\t${yellowColor}${comarca}\n" +
         "${redColor}Capital:\t${yellowColor}${capital}\n" +
         "${redColor}Poblacion:\t${yellowColor}${poblacion}\n" +
-        "${redColor}Imagen:\t${yellowColor}${image}\n" +
+        "${redColor}Imagen:  \t${yellowColor}${image}\n" +
         "${redColor}Descripcion:\t${yellowColor}${desc}\n" +
-        "${redColor}Coordenadas:\t${yellowColor}${latitud},${longitud}\n";
+        "${redColor}Coordenadas:\t${yellowColor}${latitud},${longitud}${resetColor}\n";
   }
 }

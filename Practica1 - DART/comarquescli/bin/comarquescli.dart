@@ -4,16 +4,17 @@ import 'package:comarquescli/comarques_service.dart';
 import 'package:comarquescli/provincia.dart';
 import 'package:comarquescli/comarca.dart';
 
-  // UI de la aplicacion
-  String fontColorBlack = "\x1B[31m";
-  String fontColorReset = "\x1B[0m";
+// UI de la aplicacion
+String fontColorBlack = "\x1B[31m";
+String fontColorRed = "\x1B[33m";
+String fontColorReset = "\x1B[0m";
 
+// Punto de entrada
 void main(List<String> arguments) {
   // Herramientas de clase
-  // Atributos de clase
   List<String> listArguments = List.from(arguments);
-  String? order;
-  String? args;
+  String? endpoint;
+  String? userArgument;
 
   // Validacion de numero de argumentos
   if (arguments.isEmpty) {
@@ -22,14 +23,15 @@ void main(List<String> arguments) {
   }
 
   // Separamos la provincia, comarca e informacion de la lista de argumentos
-  order = listArguments[0];
+  endpoint = listArguments[0];
   listArguments.removeAt(0);
-  args = listArguments.join(" ");
+  userArgument = listArguments.join(" ");
 
   // Llamamos a la funcion que corresponde segun el argumento que le pasamos al programa
-  switch (order) {
+  // Los endpoints posibles son: 'provincies', 'comarques', 'infocomarca'
+  switch (endpoint) {
     case "provincies":
-      showProvinces();
+      displayProvinces();
       break;
     case "comarques":
       if (arguments.length != 2) {
@@ -37,7 +39,7 @@ void main(List<String> arguments) {
             "${fontColorBlack}Numero de argumentos incorrecto. Debe especificar la provincia${fontColorReset}");
         exit(-1);
       }
-      showComarcas(args);
+      displayComarcas(userArgument);
       break;
     case "infocomarca":
       if (arguments.length < 2) {
@@ -45,20 +47,18 @@ void main(List<String> arguments) {
             "${fontColorBlack}Numero de argumentos incorrecto. Debe especificar la comarca${fontColorReset}");
         exit(-1);
       }
-      showInfoComarca(args);
+      displayInfoComarca(userArgument);
       break;
     default:
-      print("${fontColorBlack}Argumento desconocido${fontColorReset}");
+      print("${fontColorBlack}Argumento no valido${fontColorReset}");
   }
 }
 
 // FUNCIONES SINCRONICAS
 // Funcion que muestra las provincias
-showProvinces() {
-  // Province List
+displayProvinces() {
   Future<List<Provincia>> futureAnswer = ComarquesService.getProvinces();
 
-  // Callback
   futureAnswer.then((answer) {
     if (answer.isNotEmpty) {
       for (var province in answer) {
@@ -73,13 +73,12 @@ showProvinces() {
 
 // FUNCIONES ASINCRONICAS
 // Funcion que muestra las comarcas
-showComarcas(String provincia) async {
+displayComarcas(String provincia) async {
   List<Comarca> comarcasAnswer = await ComarquesService.getComarcas(provincia);
 
-  // Comarca Callback
   if (comarcasAnswer.isNotEmpty) {
     for (var comarca in comarcasAnswer) {
-      String result = comarca.toListElements();
+      String result = comarca.getComarcaString();
       print(result);
     }
   } else {
@@ -87,15 +86,15 @@ showComarcas(String provincia) async {
   }
 }
 
-//Funcion que muestra la informacion de una comarca
-showInfoComarca(String comarcaNombre) async {
-  Comarca comarca = await ComarquesService.getComarcaInfo(comarcaNombre);
-  String result = comarca.toString();
-  print(result);
+// Funcion que muestra la informacion de una comarca
+displayInfoComarca(String comarcaNombre) async {
+  Comarca infoComarca = await ComarquesService.getComarcaInfo(comarcaNombre); 
+  String infoResult = infoComarca.toString();
+  print(infoResult); 
 }
 
-// Implementacion de visualizar provincias con metodos sincronizados
-showProvincesSync(String provincia) async {
+// La misma funcion de arriba de visualizar provincias, esta vez con metodos sincronizados
+displayProvincesSync(String provincia) async {
   List<Comarca> provincies = await ComarquesService.getComarcas(provincia);
 
   if (provincies.isNotEmpty) {
