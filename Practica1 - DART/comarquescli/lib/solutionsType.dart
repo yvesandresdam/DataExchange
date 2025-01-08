@@ -1,6 +1,0 @@
-enum SolutionsType{
-  SOLUTION1,
-  SOLUTION2,
-  SOLUTION3,
-  SOLUTION4
-}
